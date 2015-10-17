@@ -3,8 +3,12 @@
 perl -p -i -e 's#http://us.archive.ubuntu.com/ubuntu#http://mirrors.digitalocean.com/ubuntu#gi' /etc/apt/sources.list
 
 # Update the box
-apt-get -y update >/dev/null
-apt-get -y install facter linux-headers-$(uname -r) build-essential zlib1g-dev libssl-dev libreadline-gplv2-dev curl unzip >/dev/null
+apt-get update
+apt-get dist-upgrade -y
+apt-get install -y facter linux-headers-$(uname -r) build-essential zlib1g-dev libssl-dev libreadline-gplv2-dev curl unzip python-dev
+
+# Install pip
+curl -sSL https://bootstrap.pypa.io/get-pip.py | python
 
 # Tweak sshd to prevent DNS resolution (speed up logins)
 echo 'UseDNS no' >> /etc/ssh/sshd_config
