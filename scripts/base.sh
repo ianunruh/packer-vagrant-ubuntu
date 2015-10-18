@@ -5,7 +5,7 @@ perl -p -i -e 's#http://us.archive.ubuntu.com/ubuntu#http://mirrors.digitalocean
 # Update the box
 apt-get update
 apt-get dist-upgrade -y
-apt-get install -y facter linux-headers-$(uname -r) build-essential zlib1g-dev libssl-dev libreadline-gplv2-dev curl unzip python-dev
+apt-get install -y facter linux-headers-generic build-essential zlib1g-dev libssl-dev libreadline-gplv2-dev curl unzip python-dev
 
 # Install pip
 curl -sSL https://bootstrap.pypa.io/get-pip.py | python
@@ -26,3 +26,5 @@ GRUB_CMDLINE_LINUX="debian-installer=en_US"
 EOF
 
 update-grub
+
+reboot
